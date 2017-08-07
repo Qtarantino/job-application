@@ -67,7 +67,7 @@ class ArticleController extends Controller
                 'nom' => $element->getNom(),
                 'description' => $element->getDescription(),
                 'amountHT' => $element->getAmountHT(),
-                'creation' => $element->getCreation(),
+                'creation' => $element->getCreation()->format('d-m-Y'),
                 'amountTTC1' => $this->calcTVA1($element->getAmountHT()),
                 'amountTTC2' => $this->calcTVA2($element->getAmountHT())
             );
