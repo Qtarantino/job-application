@@ -12,7 +12,6 @@ class ArticleControllerTest extends WebTestCase
         $number = 1.0;
         $result = $controller->calcTVA1($number);
 
-        // assert that your calculator added the numbers correctly!
         $this->assertEquals(1.17, $result);
     }
 
@@ -22,7 +21,6 @@ class ArticleControllerTest extends WebTestCase
         $number = 1.0;
         $result = $controller->calcTVA2($number);
 
-        // assert that your calculator added the numbers correctly!
         $this->assertEquals(1.03, $result);
     }
 }

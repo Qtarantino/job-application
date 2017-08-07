@@ -105,8 +105,6 @@ class ArticleController extends Controller
     public function getArticles(): array
     {
         $repository = $this->getDoctrine()->getRepository('AppBundle:Article');
-        $articles = $repository->findAll();
-
-        return $articles;
+        return $repository->findAll();
     }
 }
