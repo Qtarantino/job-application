@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interact - Test{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-default navbar-fixed-top" style="">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    {% image '@AppBundle/Resources/public/images/logo-interact.png' %}
+                    <img src="{{ asset_url }}" alt="Example" width="100px" style="margin-top: -10px"/>
+                    {% endimage %}
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <div class="content" style="margin-top: 7%">
+        <div class="page-header">
+            <h1>Comparative taxes</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                {{ form_start(form) }}
+                {{ form_row(form.nom) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.montant_ht, {'type':'float'}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
