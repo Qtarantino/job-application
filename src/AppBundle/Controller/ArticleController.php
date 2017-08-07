@@ -58,9 +58,55 @@ class ArticleController extends Controller
             return $this->redirect($request->getUri());
         }
 
+        $articles = $this->getArticles();
+
+        $copiedArt = array();
+
+        foreach ($articles as $element) {
+            $copiedArt[] = array(
+                'nom' => $element->getNom(),
+                'description' => $element->getDescription(),
+                'amountHT' => $element->getAmountHT(),
+                'creation' => $element->getCreation(),
+                'amountTTC1' => $this->calcTVA1($element->getAmountHT()),
+                'amountTTC2' => $this->calcTVA2($element->getAmountHT())
+            );
+        }
+
         return $this->render(
             'default/taxes.html.twig',
-            array('form' => $form->createView())
+            array('form' => $form->createView(),
+                'copiedArt' => $copiedArt)
         );
+    }
+
+    /**
+     * @param float $number
+     * @return float
+     */
+    public function calcTVA1(float $number): float
+    {
+        return $number * 1.17;
+    }
+
+    /**
+     * @param float|int $number
+     * @return float
+     */
+    public function calcTVA2(float $number): float
+    {
+        return $number * 1.03;
+    }
+
+    /**
+     * @return array
+     * @throws \LogicException
+     */
+    public function getArticles(): array
+    {
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Article');
+        $articles = $repository->findAll();
+
+        return $articles;
     }
 }

@@ -28,5 +28,14 @@
                 {{ form_end(form) }}
             </div>
         </div>
+        {% for art in copiedArt %}
+            <tr>
+                <td>{{ art.nom }}</td>
+                <td>{{ art.description }}</td>
+                <td class="ht" style="display: none">{{ art.amountHT }}</td>
+                <td class="ttc1" style="display: none">{{ art.amountTTC1 }}</td>
+                <td class="ttc2" style="display: none">{{ art.amountTTC2 }}</td>
+            </tr>
+        {% endfor %}
     </div>
 {% endblock %}

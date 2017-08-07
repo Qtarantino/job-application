@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return array
+     */
+    public function findAll(): array
+    {
+        return $this->findBy(array(), array('creation' => 'DESC'));
+    }
 }
